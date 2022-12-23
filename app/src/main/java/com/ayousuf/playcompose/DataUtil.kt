@@ -13,7 +13,8 @@ object DataUtil {
             ComposeItem(name = "Button", Screen.Button),
             ComposeItem(name = "Floating Action Button", Screen.FloatingActionBar),
             ComposeItem(name = "BadgedBox", Screen.BadgedBox),
-            ComposeItem(name = "Menu", Screen.Menu)
+            ComposeItem(name = "Menu", Screen.Menu),
+            ComposeItem(name = "Scaffold", Screen.Scaffold)
         )
     }
 

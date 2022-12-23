@@ -23,6 +23,7 @@ import com.ayousuf.playcompose.ui.compose.list.ListView
 import com.ayousuf.playcompose.ui.compose.menu.CreateDropdownMenu
 import com.ayousuf.playcompose.ui.compose.menu.CreateExposedDropdownMenu
 import com.ayousuf.playcompose.ui.compose.progress.*
+import com.ayousuf.playcompose.ui.compose.scaffold.CreateScaffoldLayout
 
 @Composable
 fun Navigation(){
@@ -53,6 +54,9 @@ fun Navigation(){
         }
         composable(route = Screen.Menu.route) {
             MenuScreen()
+        }
+        composable(route = Screen.Scaffold.route) {
+            ScaffoldScreen()
         }
     }
 }
@@ -156,5 +160,15 @@ fun MenuScreen(){
         CreateDropdownMenu()
         Spacer(modifier = Modifier.height(250.dp))
         CreateExposedDropdownMenu()
+    }
+}
+
+@Composable
+fun ScaffoldScreen() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        CreateScaffoldLayout()
     }
 }
