@@ -10,4 +10,5 @@ sealed class Screen(val route:String){
     object BadgedBox : Screen("BadgedBox")
     object Menu : Screen("Menu")
     object Scaffold : Screen("Scaffold")
+    object Dialog : Screen("Dialog")
 }

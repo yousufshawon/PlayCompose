@@ -2,8 +2,12 @@ package com.ayousuf.playcompose.ui.navigation
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -18,12 +22,15 @@ import com.ayousuf.playcompose.ui.Screen
 import com.ayousuf.playcompose.ui.compose.badgebox.CreateBadgeBox
 import com.ayousuf.playcompose.ui.compose.button.*
 import com.ayousuf.playcompose.ui.compose.card.GetCard
+import com.ayousuf.playcompose.ui.compose.dialog.CreateAlertDialog
+import com.ayousuf.playcompose.ui.compose.dialog.CreateDialog
 import com.ayousuf.playcompose.ui.compose.list.ComposeItemListView
 import com.ayousuf.playcompose.ui.compose.list.ListView
 import com.ayousuf.playcompose.ui.compose.menu.CreateDropdownMenu
 import com.ayousuf.playcompose.ui.compose.menu.CreateExposedDropdownMenu
 import com.ayousuf.playcompose.ui.compose.progress.*
 import com.ayousuf.playcompose.ui.compose.scaffold.CreateScaffoldLayout
+
 
 @Composable
 fun Navigation(){
@@ -57,6 +64,9 @@ fun Navigation(){
         }
         composable(route = Screen.Scaffold.route) {
             ScaffoldScreen()
+        }
+        composable(route = Screen.Dialog.route) {
+            DialogScreen()
         }
     }
 }
@@ -170,5 +180,40 @@ fun ScaffoldScreen() {
             .fillMaxSize()
     ) {
         CreateScaffoldLayout()
+    }
+}
+
+@Composable
+fun DialogScreen() {
+
+    val openAlertDialog = remember { mutableStateOf(false) }
+    val openDialog = remember { mutableStateOf(false) }
+    Column(
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                openAlertDialog.value = true
+            }
+        ) {
+            Text(text = "Open Alert Dialog")
+        }
+
+        CreateAlertDialog(openAlertDialog)
+
+        Spacer(modifier = Modifier.height(32.dp))
+        
+        Button(
+            onClick = {
+                openDialog.value = true
+            }
+        ) {
+            Text(text = "Open Dialog")
+        }
+
+        CreateDialog(openDialog)
     }
 }
