@@ -77,9 +77,23 @@ fun Navigation(){
 
 @Composable
 fun MainScreen(navController : NavController){
-    ComposeItemListView(dataList = DataUtil.getComposeItems(), onClick = {
-        navController.navigate(it.screen.route)
-    })
+    Scaffold(
+        topBar = {
+            TopAppBar(title = {
+                Text(text = "Compose List")
+            })
+        }
+    ) { paddingValues ->
+        Box(modifier = Modifier.padding(paddingValues)){
+            ComposeItemListView(
+                dataList = DataUtil.getComposeItems(),
+                onClick = {
+                    navController.navigate(it.screen.route)
+                }
+            )
+        }
+    }
+
 }
 
 @Composable
