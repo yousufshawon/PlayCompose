@@ -11,4 +11,5 @@ sealed class Screen(val route:String){
     object Menu : Screen("Menu")
     object Scaffold : Screen("Scaffold")
     object Dialog : Screen("Dialog")
+    object BottomSheet : Screen("BottomSheet")
 }

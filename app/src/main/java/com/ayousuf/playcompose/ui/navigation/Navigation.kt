@@ -1,13 +1,11 @@
 package com.ayousuf.playcompose.ui.navigation
 
+import android.util.Log
 import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.material.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -16,10 +14,12 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.ayousuf.playcompose.DataUtil
+import com.ayousuf.playcompose.util.DataUtil
 import com.ayousuf.playcompose.data.User
 import com.ayousuf.playcompose.ui.Screen
 import com.ayousuf.playcompose.ui.compose.badgebox.CreateBadgeBox
+import com.ayousuf.playcompose.ui.compose.bottomsheet.CreateModalBottomSheet
+import com.ayousuf.playcompose.ui.compose.bottomsheet.CreateScaffoldBottomSheet
 import com.ayousuf.playcompose.ui.compose.button.*
 import com.ayousuf.playcompose.ui.compose.card.GetCard
 import com.ayousuf.playcompose.ui.compose.dialog.CreateAlertDialog
@@ -30,6 +30,7 @@ import com.ayousuf.playcompose.ui.compose.menu.CreateDropdownMenu
 import com.ayousuf.playcompose.ui.compose.menu.CreateExposedDropdownMenu
 import com.ayousuf.playcompose.ui.compose.progress.*
 import com.ayousuf.playcompose.ui.compose.scaffold.CreateScaffoldLayout
+import kotlinx.coroutines.launch
 
 
 @Composable
@@ -67,6 +68,9 @@ fun Navigation(){
         }
         composable(route = Screen.Dialog.route) {
             DialogScreen()
+        }
+        composable(route = Screen.BottomSheet.route) {
+            BottomSheetScreen(navController = navController)
         }
     }
 }
@@ -216,4 +220,70 @@ fun DialogScreen() {
 
         CreateDialog(openDialog)
     }
+}
+
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun BottomSheetScreen(navController : NavController) {
+
+    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed))
+    var sheetPeekHeight by remember { mutableStateOf(BottomSheetScaffoldDefaults.SheetPeekHeight) }
+    val modalBottomSheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden, confirmStateChange = {
+        Log.i("BottomSheetScreen", "Modal Bottom Sheet state: $it")
+        if (it == ModalBottomSheetValue.Hidden){
+            sheetPeekHeight = BottomSheetScaffoldDefaults.SheetPeekHeight
+        }
+        true
+    })
+    val coroutineScope = rememberCoroutineScope()
+
+    BackHandler(modalBottomSheetState.isVisible) {
+        coroutineScope.launch { modalBottomSheetState.hide() }
+    }
+
+    CreateScaffoldBottomSheet(navController, bottomSheetScaffoldState, coroutineScope, sheetPeekHeight) {
+        Box {
+            Column {
+                Spacer(modifier = Modifier.height(32.dp))
+                Button(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 32.dp, end = 32.dp),
+                    onClick = {
+                        coroutineScope.launch {
+                            if (bottomSheetScaffoldState.bottomSheetState.isCollapsed) {
+                                bottomSheetScaffoldState.bottomSheetState.expand()
+                            } else {
+                                bottomSheetScaffoldState.bottomSheetState.collapse()
+                            }
+                        }
+                    }
+                ) {
+                    Text(text = "Show Scaffold Bottom Sheet")
+                }
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                Button(
+                    modifier = Modifier
+                        .padding(start = 32.dp, end = 32.dp)
+                        .fillMaxWidth(),
+                    onClick = {
+                        coroutineScope.launch {
+                            sheetPeekHeight = -BottomSheetScaffoldDefaults.SheetPeekHeight
+                            if (bottomSheetScaffoldState.bottomSheetState.isExpanded){
+                                bottomSheetScaffoldState.bottomSheetState.collapse()
+                            }
+                            modalBottomSheetState.show()
+                        }
+                    }
+                ) {
+                    Text(text = "Show Modal Bottom Sheet")
+                }
+            }
+            CreateModalBottomSheet(modalBottomSheetState, coroutineScope)
+        }
+    }
+
 }
