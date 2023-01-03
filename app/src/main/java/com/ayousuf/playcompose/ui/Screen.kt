@@ -7,6 +7,7 @@ sealed class Screen(val route:String){
     object Card : Screen("Card")
     object ListView : Screen("ListView")
     object Button : Screen("Button")
+    object Image : Screen("Image")
     object FloatingActionBar : Screen("Fab")
     object BadgedBox : Screen("BadgedBox")
     object Menu : Screen("Menu")

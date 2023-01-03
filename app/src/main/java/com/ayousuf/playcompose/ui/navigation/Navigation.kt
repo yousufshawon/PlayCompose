@@ -26,6 +26,7 @@ import com.ayousuf.playcompose.ui.compose.button.*
 import com.ayousuf.playcompose.ui.compose.card.GetCard
 import com.ayousuf.playcompose.ui.compose.dialog.CreateAlertDialog
 import com.ayousuf.playcompose.ui.compose.dialog.CreateDialog
+import com.ayousuf.playcompose.ui.compose.image.*
 import com.ayousuf.playcompose.ui.compose.list.ComposeItemListView
 import com.ayousuf.playcompose.ui.compose.list.ListView
 import com.ayousuf.playcompose.ui.compose.menu.CreateDropdownMenu
@@ -76,6 +77,9 @@ fun Navigation(){
         }
         composable(route = Screen.BottomSheet.route) {
             BottomSheetScreen(navController = navController)
+        }
+        composable(route = Screen.Image.route) {
+            ImageScreen()
         }
     }
 }
@@ -191,6 +195,43 @@ fun ButtonScreen(){
         CreateButtonWithShape()
     }
 }
+
+@Composable
+fun ImageScreen() {
+    Column(
+        modifier = Modifier
+            .padding(32.dp)
+            .verticalScroll(rememberScrollState())
+    ) {
+
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateSimpleImageView()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateImageView()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateImageViewWithCircleShape()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateImageViewWithRoundedCornerShape()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateImageViewWithSquashedOvalShape()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateImageViewWithBorder()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateImageViewWithRainbowBorder()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateImageViewWithCustomAspectRatio()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateImageViewWithColorFilter()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateImageViewWithFilterWithColorMatrix()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateImageViewWithBlur()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateImageViewWithTint()
+        Spacer(modifier = Modifier.height(16.dp))
+    }
+}
+
 
 @Composable
 fun FloatingActionButtonScreen() {
