@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PlayCompose</string>
+    <string name="hello_compose">Hello Compose! </string>
 </resources>

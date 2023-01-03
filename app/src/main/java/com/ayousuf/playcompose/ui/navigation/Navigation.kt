@@ -4,6 +4,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -30,6 +32,7 @@ import com.ayousuf.playcompose.ui.compose.menu.CreateDropdownMenu
 import com.ayousuf.playcompose.ui.compose.menu.CreateExposedDropdownMenu
 import com.ayousuf.playcompose.ui.compose.progress.*
 import com.ayousuf.playcompose.ui.compose.scaffold.CreateScaffoldLayout
+import com.ayousuf.playcompose.ui.compose.text.*
 import kotlinx.coroutines.launch
 
 
@@ -41,7 +44,9 @@ fun Navigation(){
         composable(route = Screen.Main.route) {
             MainScreen(navController = navController)
         }
-
+        composable(route = Screen.Text.route){
+            TextScreen()
+        }
         composable(route = Screen.Card.route){
             CardScreen()
         }
@@ -94,6 +99,46 @@ fun MainScreen(navController : NavController){
         }
     }
 
+}
+
+@Composable
+fun TextScreen() {
+    Column(
+        modifier = Modifier
+            .padding(start = 20.dp, top = 32.dp, bottom = 64.dp, end = 16.dp)
+            .verticalScroll(rememberScrollState())
+    ) {
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateSimpleText()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateCenterText()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateTextShadow()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateTextWithDifferentFonts()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateTextWithCustomFont()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateMultipleStylesInText()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateOverflowedText()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateTextStyleWithBrush()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateTextFieldWithBrush()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateSelectableText()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreatePartiallySelectableText()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateSimpleClickableTextWithPosition()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateSimpleFilledTextFieldSample()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreateSimpleOutlinedTextFieldSample()
+        Spacer(modifier = Modifier.height(16.dp))
+        CreatePasswordTextField()
+    }
 }
 
 @Composable

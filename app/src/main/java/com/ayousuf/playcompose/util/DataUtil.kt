@@ -14,6 +14,7 @@ object DataUtil {
 
     fun getComposeItems() : List<ComposeItem>{
         return listOf(
+            ComposeItem(name = "Text", Screen.Text),
             ComposeItem(name = "Card", Screen.Card),
             ComposeItem(name = "Progress", Screen.Progress),
             ComposeItem(name = "List View", Screen.ListView),
