@@ -28,6 +28,7 @@ import com.ayousuf.playcompose.ui.compose.card.GetCard
 import com.ayousuf.playcompose.ui.compose.dialog.CreateAlertDialog
 import com.ayousuf.playcompose.ui.compose.dialog.CreateDialog
 import com.ayousuf.playcompose.ui.compose.image.*
+import com.ayousuf.playcompose.ui.compose.layout.CreateConstraintLayout
 import com.ayousuf.playcompose.ui.compose.list.ComposeItemListView
 import com.ayousuf.playcompose.ui.compose.list.ListView
 import com.ayousuf.playcompose.ui.compose.menu.CreateDropdownMenu
@@ -90,6 +91,9 @@ fun Navigation(viewModel: MainViewModel){
         }
         composable(route = Screen.Pagination.route) {
             PaginationScreen(viewModel)
+        }
+        composable(route = Screen.ConstraintLayout.route) {
+            ConstraintLayoutScreen()
         }
     }
 }
@@ -413,4 +417,9 @@ fun CalendarScreen() {
 @Composable
 fun PaginationScreen(viewModel: MainViewModel) {
     CreatePagination(viewModel)
+}
+
+@Composable
+fun ConstraintLayoutScreen() {
+    CreateConstraintLayout()
 }

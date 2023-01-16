@@ -16,4 +16,5 @@ sealed class Screen(val route:String){
     object BottomSheet : Screen("BottomSheet")
     object Calendar : Screen("Calendar")
     object Pagination : Screen("Pagination")
+    object ConstraintLayout : Screen("ConstraintLayout")
 }

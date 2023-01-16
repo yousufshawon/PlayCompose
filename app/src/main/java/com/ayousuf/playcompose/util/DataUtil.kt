@@ -28,6 +28,7 @@ object DataUtil {
             ComposeItem(name = "BottomSheet", Screen.BottomSheet),
             ComposeItem(name = "Calendar", Screen.Calendar),
             ComposeItem(name = "Pagination", Screen.Pagination),
+            ComposeItem(name = "ConstraintLayout", Screen.ConstraintLayout)
         )
     }
 
