@@ -25,7 +25,8 @@ object DataUtil {
             ComposeItem(name = "Menu", Screen.Menu),
             ComposeItem(name = "Scaffold", Screen.Scaffold),
             ComposeItem(name = "Dialog", Screen.Dialog),
-            ComposeItem(name = "BottomSheet", Screen.BottomSheet)
+            ComposeItem(name = "BottomSheet", Screen.BottomSheet),
+            ComposeItem(name = "Calendar", Screen.Calendar)
         )
     }
 

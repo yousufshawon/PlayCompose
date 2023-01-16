@@ -31,6 +31,8 @@ import com.ayousuf.playcompose.ui.compose.list.ComposeItemListView
 import com.ayousuf.playcompose.ui.compose.list.ListView
 import com.ayousuf.playcompose.ui.compose.menu.CreateDropdownMenu
 import com.ayousuf.playcompose.ui.compose.menu.CreateExposedDropdownMenu
+import com.ayousuf.playcompose.ui.compose.picker.CreateCalendar
+import com.ayousuf.playcompose.ui.compose.picker.CreateTimePicker
 import com.ayousuf.playcompose.ui.compose.progress.*
 import com.ayousuf.playcompose.ui.compose.scaffold.CreateScaffoldLayout
 import com.ayousuf.playcompose.ui.compose.text.*
@@ -80,6 +82,9 @@ fun Navigation(){
         }
         composable(route = Screen.Image.route) {
             ImageScreen()
+        }
+        composable(route = Screen.Calendar.route) {
+            CalendarScreen()
         }
     }
 }
@@ -386,4 +391,16 @@ fun BottomSheetScreen(navController : NavController) {
         }
     }
 
+}
+
+@Composable
+fun CalendarScreen() {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .verticalScroll(rememberScrollState())
+    ) {
+        CreateCalendar()
+        Spacer(modifier = Modifier.heightIn(12.dp))
+        CreateTimePicker()
+    }
 }
