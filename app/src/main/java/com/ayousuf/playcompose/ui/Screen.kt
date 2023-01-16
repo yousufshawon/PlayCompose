@@ -15,4 +15,5 @@ sealed class Screen(val route:String){
     object Dialog : Screen("Dialog")
     object BottomSheet : Screen("BottomSheet")
     object Calendar : Screen("Calendar")
+    object Pagination : Screen("Pagination")
 }

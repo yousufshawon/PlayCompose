@@ -1,4 +1,4 @@
-package com.ayousuf.playcompose
+package com.ayousuf.playcompose.data
 
 import com.ayousuf.playcompose.ui.Screen
 

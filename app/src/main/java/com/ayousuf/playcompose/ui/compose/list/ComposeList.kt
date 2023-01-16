@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ayousuf.playcompose.ComposeItem
+import com.ayousuf.playcompose.data.ComposeItem
 import com.ayousuf.playcompose.data.User
 import com.ayousuf.playcompose.ui.compose.card.GetCard
 

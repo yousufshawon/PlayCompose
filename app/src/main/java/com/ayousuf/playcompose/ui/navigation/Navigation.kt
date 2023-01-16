@@ -16,6 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ayousuf.playcompose.ui.main.MainViewModel
 import com.ayousuf.playcompose.util.DataUtil
 import com.ayousuf.playcompose.data.User
 import com.ayousuf.playcompose.ui.Screen
@@ -31,6 +32,7 @@ import com.ayousuf.playcompose.ui.compose.list.ComposeItemListView
 import com.ayousuf.playcompose.ui.compose.list.ListView
 import com.ayousuf.playcompose.ui.compose.menu.CreateDropdownMenu
 import com.ayousuf.playcompose.ui.compose.menu.CreateExposedDropdownMenu
+import com.ayousuf.playcompose.ui.compose.pagination.CreatePagination
 import com.ayousuf.playcompose.ui.compose.picker.CreateCalendar
 import com.ayousuf.playcompose.ui.compose.picker.CreateTimePicker
 import com.ayousuf.playcompose.ui.compose.progress.*
@@ -40,7 +42,7 @@ import kotlinx.coroutines.launch
 
 
 @Composable
-fun Navigation(){
+fun Navigation(viewModel: MainViewModel){
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = Screen.Main.route){
@@ -85,6 +87,9 @@ fun Navigation(){
         }
         composable(route = Screen.Calendar.route) {
             CalendarScreen()
+        }
+        composable(route = Screen.Pagination.route) {
+            PaginationScreen(viewModel)
         }
     }
 }
@@ -403,4 +408,9 @@ fun CalendarScreen() {
         Spacer(modifier = Modifier.heightIn(12.dp))
         CreateTimePicker()
     }
+}
+
+@Composable
+fun PaginationScreen(viewModel: MainViewModel) {
+    CreatePagination(viewModel)
 }

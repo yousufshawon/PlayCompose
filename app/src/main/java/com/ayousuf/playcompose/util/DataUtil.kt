@@ -5,7 +5,7 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Share
-import com.ayousuf.playcompose.ComposeItem
+import com.ayousuf.playcompose.data.ComposeItem
 import com.ayousuf.playcompose.data.ListItemData
 import com.ayousuf.playcompose.data.User
 import com.ayousuf.playcompose.ui.Screen
@@ -26,7 +26,8 @@ object DataUtil {
             ComposeItem(name = "Scaffold", Screen.Scaffold),
             ComposeItem(name = "Dialog", Screen.Dialog),
             ComposeItem(name = "BottomSheet", Screen.BottomSheet),
-            ComposeItem(name = "Calendar", Screen.Calendar)
+            ComposeItem(name = "Calendar", Screen.Calendar),
+            ComposeItem(name = "Pagination", Screen.Pagination),
         )
     }
 
